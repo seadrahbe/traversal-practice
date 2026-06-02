@@ -16,10 +16,9 @@ public class TraversalPractice {
    * Each value is printed on a separate line.
    * The nodes are traversed pre-order.
    * 
-   * @param <T> The type of value the nodes hold
    * @param node The root of the tree to print
    */
-  public static <T> void printNodesWithOneChild(Node<T> node) {
+  public static void printNodesWithOneChild(Node<?> node) {
     
   }
 
@@ -53,11 +52,10 @@ public class TraversalPractice {
    * Edge cases: 
    *   Returns 0 if node is null, returns 1 if there is only a root with no children.
    * 
-   * @param <T> The type of value the nodes hold
    * @param node The root of the tree
    * @return The number of levels in the tree
    */
-  public static <T> int numLevels(Node<T> node) {
+  public static int numLevels(Node<?> node) {
     return 0;
   }
 
