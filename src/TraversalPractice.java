@@ -73,29 +73,33 @@ public class TraversalPractice {
     if (node.left == null && node.right == null) return node.value;
 
     if (node.left != null && node.right != null) {
-      if (node.value > node.left.value && node.value > node.right.value) {
-        return node.value;
-      } else if (node.left.value > node.value && node.left.value > node.right.value) {
-        return node.left.value;
+      int maxLeft = maxVal(node.left);
+      int maxRight = maxVal(node.right);
+
+      if (node.value > maxLeft && node.value > maxRight) {
+          return node.value;
+      } else if (maxLeft > node.value && maxLeft > maxRight) {
+          return maxLeft;
       } else {
-        return node.right.value;
+          return maxRight;
       }
     } else if (node.left != null && node.right == null) {
-      if (node.value > node.left.value) {
-        return node.value;
+      int maxLeft = maxVal(node.left);
+
+      if (node.value > maxLeft) {
+          return node.value;
       } else {
-        return node.left.value;
+          return maxLeft;
       }
     } else {
-      if (node.value > node.right.value) {
-        return node.value;
+      int maxRight = maxVal(node.right);
+      
+      if (node.value > maxRight) {
+          return node.value;
       } else {
-        return node.right.value;
+          return maxRight;
       }
     }
-
-    int maxLeft = maxVal(node.left);
-    int maxRight = maxVal(node.right);
   }
 
   /**
