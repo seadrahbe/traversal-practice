@@ -106,8 +106,25 @@ public class TraversalPractice {
 
      // Replace the below line to create a tree 
      // as represented in the diagram above
-     Node<Integer> smallTree = null;
+     Node<Integer> nodeNine = new Node<>(9, null, null);
+     Node<Integer> nodeFive = new Node<>(5, null, null);
+     Node<Integer> nodeSixteen = new Node<>(16, null, null);
+     Node<Integer> nodeFortyFive = new Node<>(45, nodeNine, nodeFive);
+     Node<Integer> nodeEightyTwo = new Node<>(82, null, nodeSixteen);
+     Node<Integer> root = new Node<>(99, nodeFortyFive, nodeEightyTwo);
 
+     // OR
+
+     Node<Integer> smallTree = new Node<>(99, 
+        new Node<>(45, 
+            new Node<>(9, null, null),
+            new Node<>(5, null, null)
+          ), 
+        new Node<>(82, 
+          null,
+          new Node<>(16, null, null)
+        )
+      );
 
     /*
      *              42
