@@ -9,6 +9,14 @@ public class TraversalPractice {
    */
   public static void printOddNodes(Node<Integer> node) {
 
+    if (node == null) return;
+
+    // Traverse
+    printOddNodes(node.left);
+    printOddNodes(node.right);
+
+    // Check if odd
+    if (node.value % 2 != 0) System.out.println(node.value);
   }
 
   /**
@@ -19,7 +27,16 @@ public class TraversalPractice {
    * @param node The root of the tree to print
    */
   public static void printNodesWithOneChild(Node<?> node) {
-    
+    if (node == null) return;
+
+    // Check for one child (null and not null left & right)
+    if ((node.left == null && node.right != null) || (node.right == null && node.left != null)) {
+      System.out.println(node.value);
+    }
+
+    // Traverse
+    printNodesWithOneChild(node.left);
+    printNodesWithOneChild(node.right);
   }
 
     /**
@@ -31,7 +48,14 @@ public class TraversalPractice {
    * @return the sum 
    */
   public static int treeSum(Node<Integer> node) {
-    return 0;
+    if (node == null) return 0;
+
+    // Traverse
+    int leftCount = treeSum(node.left);
+    int rightCount = treeSum(node.right);
+
+    // Return vals + root
+    return 1 + leftCount + rightCount;
   }
 
   /**
@@ -44,7 +68,34 @@ public class TraversalPractice {
    * @return the max value
    */
   public static int maxVal(Node<Integer> node) {
-    return 0;
+    if (node == null) return 0;
+
+    if (node.left == null && node.right == null) return node.value;
+
+    if (node.left != null && node.right != null) {
+      if (node.value > node.left.value && node.value > node.right.value) {
+        return node.value;
+      } else if (node.left.value > node.value && node.left.value > node.right.value) {
+        return node.left.value;
+      } else {
+        return node.right.value;
+      }
+    } else if (node.left != null && node.right == null) {
+      if (node.value > node.left.value) {
+        return node.value;
+      } else {
+        return node.left.value;
+      }
+    } else {
+      if (node.value > node.right.value) {
+        return node.value;
+      } else {
+        return node.right.value;
+      }
+    }
+
+    int maxLeft = maxVal(node.left);
+    int maxRight = maxVal(node.right);
   }
 
   /**
