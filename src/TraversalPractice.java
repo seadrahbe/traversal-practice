@@ -55,7 +55,7 @@ public class TraversalPractice {
     int rightCount = treeSum(node.right);
 
     // Return vals + root
-    return 1 + leftCount + rightCount;
+    return node.value + leftCount + rightCount;
   }
 
   /**
